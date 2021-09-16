@@ -83,20 +83,35 @@ theme_seagull <- function(){
     )
 }
 
+#source https://projects.susielu.com/viz-palette
+scale_fill_magpie <- function(){
+  library(scales)
+  discrete_scale("fill",
+                 "magpie",
+                 manual_pal(values = c("#ffd700",
+                                       "#ffb14e",
+                                       "#fa8775",
+                                       "#ea5f94",
+                                       "#cd34b5",
+                                       "#9d02d7",
+                                       "#0000ff",
+                                       "#000000")))
+}
 
-# theme_seagull testing
-ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
-  geom_point(size=3) + 
-  labs(title="Scatter Plot",
-       subtitle = "disp vs mpg",
-       caption = "Data: mtcars") +
-  theme_seagull()
-
-ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) + 
-  facet_wrap(~ manufacturer,scales="free")+
-  labs(title="Plot With Facets") + 
-  theme_seagull()
-
+#source https://projects.susielu.com/viz-palette
+scale_colour_magpie <- function(){
+  library(scales)
+  discrete_scale("colour",
+                 "magpie",
+                 manual_pal(values = c("#ffd700",
+                                       "#ffb14e",
+                                       "#fa8775",
+                                       "#ea5f94",
+                                       "#cd34b5",
+                                       "#9d02d7",
+                                       "#0000ff",
+                                       "#000000")))
+}
 
 # theme_wombat testing
 ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
@@ -104,9 +119,48 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb))) +
   labs(title="Scatter Plot",
        subtitle = "disp vs mpg",
        caption = "Data: mtcars") +
-  theme_wombat()
+  theme_wombat()+
+  scale_colour_magpie()
 
 ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) + 
   facet_wrap(~ manufacturer,scales="free")+
   labs(title="Plot With Facets") + 
+  theme_wombat() +
+  scale_colour_magpie()
+
+ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
+  geom_bar(alpha=0.7) + 
+  labs(title="Bar Plot") +
   theme_wombat()
+
+ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) + 
+  geom_point(alpha=0.7) + 
+  labs(title="Bubble Plot") + 
+  scale_size_continuous(range = c(3,10)) +
+  theme_wombat()
+
+# theme_seagull testing
+ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
+  geom_point(size=3) + 
+  labs(title="Scatter Plot",
+       subtitle = "disp vs mpg",
+       caption = "Data: mtcars") +
+  theme_seagull() +
+  scale_colour_magpie()
+
+ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) + 
+  facet_wrap(~ manufacturer,scales="free")+
+  labs(title="Plot With Facets") + 
+  theme_seagull() +
+  scale_colour_magpie()
+
+ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
+  geom_bar(alpha=0.7) + 
+  labs(title="Bar Plot") +
+  theme_seagull()
+
+ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) + 
+  geom_point(alpha=0.7) + 
+  labs(title="Bubble Plot") + 
+  scale_size_continuous(range = c(3,10)) +
+  theme_seagull()
