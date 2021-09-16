@@ -53,7 +53,8 @@ theme_seagull <- function(){
       
       # strip elements
       strip.text = element_text(face = "bold",
-                                size = rel(1.1)),
+                                size = rel(1.1),
+                                margin = margin(0,0,0.5,0, unit = "cm")),
       
       # axis elements
       axis.title = element_text(face = "bold", size = rel(1.1)),
@@ -82,6 +83,8 @@ theme_seagull <- function(){
     )
 }
 
+
+# theme_seagull testing
 ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
   geom_point(size=3) + 
   labs(title="Scatter Plot",
@@ -89,6 +92,13 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb))) +
        caption = "Data: mtcars") +
   theme_seagull()
 
+ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) + 
+  facet_wrap(~ manufacturer,scales="free")+
+  labs(title="Plot With Facets") + 
+  theme_seagull()
+
+
+# theme_wombat testing
 ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
   geom_point(size=3) + 
   labs(title="Scatter Plot",
@@ -100,19 +110,3 @@ ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) +
   facet_wrap(~ manufacturer,scales="free")+
   labs(title="Plot With Facets") + 
   theme_wombat()
-
-ggplot(mtcars, aes(wt, mpg)) +
-  geom_point() +
-  facet_wrap(~ cyl, scales = "free") + theme_bw()
-
-ggplot(mtcars, aes(wt, mpg)) +
-  geom_point() +
-  facet_wrap(~ cyl, scales = "free") + theme_minimal()
-
-ggplot(mtcars, aes(wt, mpg)) +
-  geom_point() +
-  facet_wrap(~ cyl, scales = "free") + theme_light()
-
-ggplot(mtcars, aes(wt, mpg)) +
-  geom_point() +
-  facet_wrap(~ cyl, scales = "free")
