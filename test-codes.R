@@ -129,14 +129,20 @@ ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) +
   scale_colour_magpie()
 
 ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
-  geom_bar(alpha=0.7) + 
+  geom_bar() + 
   labs(title="Bar Plot") +
   theme_wombat()
 
 ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) + 
-  geom_point(alpha=0.7) + 
+  geom_point() + 
   labs(title="Bubble Plot") + 
   scale_size_continuous(range = c(3,10)) +
+  theme_wombat()
+
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line() +
+  labs(title = "Line Plot",
+       caption = "Data: economics_long") +
   theme_wombat()
 
 # theme_seagull testing
@@ -163,4 +169,10 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) +
   geom_point(alpha=0.7) + 
   labs(title="Bubble Plot") + 
   scale_size_continuous(range = c(3,10)) +
+  theme_seagull()
+
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line() +
+  labs(title = "Line Plot",
+       caption = "Data: economics_long") +
   theme_seagull()
