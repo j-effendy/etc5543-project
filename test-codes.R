@@ -151,6 +151,7 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb))) +
   labs(title="Scatter Plot",
        subtitle = "disp vs mpg",
        caption = "Data: mtcars") +
+  expand_limits(x = 0, y = 0)+
   theme_seagull() +
   scale_colour_magpie()
 
@@ -161,12 +162,12 @@ ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) +
   scale_colour_magpie()
 
 ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
-  geom_bar(alpha=0.7) + 
+  geom_bar() + 
   labs(title="Bar Plot") +
   theme_seagull()
 
 ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) + 
-  geom_point(alpha=0.7) + 
+  geom_point() + 
   labs(title="Bubble Plot") + 
   scale_size_continuous(range = c(3,10)) +
   theme_seagull()
