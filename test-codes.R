@@ -62,8 +62,10 @@ theme_seagull <- function(){
       axis.title.y = element_text(margin = margin(0,0.5,0,0, unit = "cm"),
                                   angle = 90),
       axis.text = element_text(family = font),
-      axis.line.x = element_line(color = "#222222"),
+      axis.line.x = element_line(color = "#222222", size = 1),
       axis.ticks.x = element_line(),
+      #axis.line = element_blank(),
+      #axis.ticks = element_blank(),
       
       # legend elements
       legend.position = "bottom",
@@ -130,6 +132,8 @@ ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) +
 
 ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
   geom_bar() + 
+  scale_y_continuous(expand = c(0,0)) + 
+  scale_x_discrete(expand = c(0,0)) +
   labs(title="Bar Plot") +
   theme_wombat()
 
@@ -141,6 +145,8 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) +
 
 ggplot(economics_long, aes(date, value01, colour = variable)) +
   geom_line() +
+  scale_y_continuous(expand = c(0,0)) + 
+  scale_x_continuous(expand = c(0,0)) +
   labs(title = "Line Plot",
        caption = "Data: economics_long") +
   theme_wombat()
@@ -151,7 +157,6 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb))) +
   labs(title="Scatter Plot",
        subtitle = "disp vs mpg",
        caption = "Data: mtcars") +
-  expand_limits(x = 0, y = 0)+
   theme_seagull() +
   scale_colour_magpie()
 
@@ -162,7 +167,9 @@ ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) +
   scale_colour_magpie()
 
 ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
-  geom_bar() + 
+  geom_bar() +
+  scale_y_continuous(expand = c(0,0)) + 
+  scale_x_discrete(expand = c(0,0)) +
   labs(title="Bar Plot") +
   theme_seagull()
 
@@ -174,6 +181,8 @@ ggplot(mtcars, aes(mpg,disp,color=factor(carb),size=hp)) +
 
 ggplot(economics_long, aes(date, value01, colour = variable)) +
   geom_line() +
+  scale_x_continuous(expand = c(0.01,0.01)) +
+  scale_y_continuous(expand = c(0,0)) +
   labs(title = "Line Plot",
        caption = "Data: economics_long") +
   theme_seagull()
