@@ -1,0 +1,70 @@
+---
+title: "Project Report"
+author: "Jimmy Effendy"
+date: "27/09/2021"
+output: bookdown::pdf_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, echo=FALSE, warning=FALSE)
+library(tidyverse)
+library(ggplot2)
+source("test-codes.R")
+```
+
+# Introduction
+
+The aim of this project is to create a package that can produce figures that
+are aesthetically cohesive for a textbook in an automatic and reproducible
+manner. 
+
+Firstly, the report will present two different figures styles/aesthetics. Next,
+these proposed figures aesthetics will be compared against ggplot2 basic themes.
+
+# theme_wombat
+
+The first figure aesthetic variant is called `theme_wombat`. This theme is built 
+upon ggplot2 basic theme `theme_bw`.
+
+```{r wombat-scatter}
+ggplot(mtcars, aes(mpg,disp,color=factor(carb))) + 
+  geom_point(size=3) + 
+  labs(title="Scatter Plot",
+       subtitle = "disp vs mpg",
+       caption = "Data: mtcars") +
+  theme_wombat()+
+  scale_colour_magpie()
+```
+
+```{r wombat-bar}
+ggplot(mtcars, aes(factor(carb),fill=factor(carb))) + 
+  geom_bar() + 
+  scale_y_continuous(expand = c(0,0)) + 
+  scale_x_discrete(expand = c(0,0)) +
+  labs(title="Bar Plot") +
+  theme_wombat()
+```
+
+```{r wombat-line}
+ggplot(economics_long, aes(date, value01, colour = variable)) +
+  geom_line() +
+  scale_y_continuous(expand = c(0,0)) + 
+  scale_x_continuous(expand = c(0,0)) +
+  labs(title = "Line Plot",
+       caption = "Data: economics_long") +
+  theme_wombat()
+```
+
+```{r wombat-facet}
+ggplot(data = mpg,aes(cty, hwy,color=class))+geom_point(size=3) + 
+  facet_wrap(~ manufacturer,scales="free")+
+  labs(title="Plot With Facets") + 
+  theme_wombat() +
+  scale_colour_magpie()
+```
+
+# theme_seagull
+
+# Comparisons
+
+# Currently in Development

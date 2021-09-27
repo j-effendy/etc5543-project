@@ -1,7 +1,7 @@
 library(ggplot2)
 
 theme_wombat <- function(){
-  font <- "Lato"
+  #font <- "Lato"
   
   theme_bw() %+replace%
     
@@ -21,7 +21,7 @@ theme_wombat <- function(){
       axis.title.y = element_text(margin = margin(0,0.5,0,0, unit = "cm"),
                                   angle = 90),
       axis.line = element_line(color = "#222222"),
-      axis.text = element_text(family = font),
+      axis.text = element_text(),#family = font),
       
       # legend elements
       legend.position = "bottom",
@@ -42,7 +42,7 @@ theme_wombat <- function(){
 }
 
 theme_seagull <- function(){
-  font <- "Lato"
+  #font <- "Lato"
   
   theme_minimal() %+replace%
     
@@ -61,7 +61,7 @@ theme_seagull <- function(){
       axis.title.x = element_text(margin = margin(0.5,0,0,0, unit = "cm")),
       axis.title.y = element_text(margin = margin(0,0.5,0,0, unit = "cm"),
                                   angle = 90),
-      axis.text = element_text(family = font),
+      axis.text = element_text(),#family = font),
       axis.line.x = element_line(color = "#222222", size = 1),
       axis.ticks.x = element_line(),
       #axis.line = element_blank(),
