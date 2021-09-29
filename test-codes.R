@@ -19,7 +19,7 @@ theme_wombat <- function(){
       axis.title = element_text(face = "bold", size = rel(1.1)),
       axis.title.x = element_text(margin = margin(0.5,0,0,0, unit = "cm")),
       axis.title.y = element_text(margin = margin(0,0.5,0,0, unit = "cm"),
-                                  angle = 90),
+                                 angle = 90),
       axis.line = element_line(color = "#222222"),
       axis.text = element_text(),#family = font),
       
